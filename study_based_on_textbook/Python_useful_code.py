@@ -143,3 +143,27 @@ remote: Total 4 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
 Receiving objects: 100% (4/4), done.
 PS C:\Users\natsu> 
 '''
+
+
+
+
+
+#jupyter notebook 内の全てのコードを抽出
+import json
+with open("ファイル名.ipynb", encoding="utf-8") as f:
+    notebook = json.load(f)
+code = "\n\n".join(
+    "".join(cell["source"])
+    for cell in notebook["cells"]
+    if cell["cell_type"] == "code"
+)
+with open("ファイル名.txt", "w", encoding="utf-8") as f:
+    f.write(code)
+
+#ctrl + shift + P　でコマンドパレットを開き、export to Python Script　でコードだけの.pyにもできる
+
+
+
+
+
+
